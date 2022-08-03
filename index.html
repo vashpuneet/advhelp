@@ -12,9 +12,56 @@
   <!-- Favicons -->
   <link href="logo.png" rel="icon">
   <link href="logo.png" rel="apple-touch-icon">
-  
+
+  <style>
+    .register .nav-tabs .nav-link:hover{
+        border: none;
+    }
+    .text-align{
+        margin-top: -3%;
+        margin-bottom: -9%;
+
+        padding: 10%;
+        margin-left: 30%;
+    }
+    .form-new{
+        margin-right: 22%;
+        margin-left: 20%;
+    }
+    .register-heading{
+        margin-left: 21%;
+        margin-bottom: 10%;
+        color: #e9ecef;
+    }
+    .register-heading h1{
+        margin-left: 21%;
+        margin-bottom: 10%;
+        color: #e9ecef;
+    }
+    .register{
+        background: -webkit-linear-gradient(left, #055a4f, #4bc711);
+        margin-top: 3%;
+        padding: 3%;
+        border-radius: 2.5rem;
+    }
+    .btnSubmit
+    {
+        width: 50%;
+        border-radius: 1rem;
+        padding: 1.5%;
+        color: #fff;
+        background-color: #045a2b;
+        border: none;
+        cursor: pointer;
+        margin-right: 6%;
+        color: rgb(246, 246, 252);
+        margin-top: 4%;
+    }
+</style>
+
+
   <script>(function(w, d) { w.CollectId = "62ea968bfbae477065476b19"; var h = d.head || d.getElementsByTagName("head")[0]; var s = d.createElement("script"); s.setAttribute("type", "text/javascript"); s.async=true; s.setAttribute("src", "https://collectcdn.com/launcher.js"); h.appendChild(s); })(window, document);</script>
-  
+
   <div id="sfc8b2krqz4kbu8tlwnthu4c9jz6l5p7r4a"></div><script type="text/javascript" src="https://counter9.stat.ovh/private/counter.js?c=8b2krqz4kbu8tlwnthu4c9jz6l5p7r4a&down=async" async></script><noscript><a href="https://www.freecounterstat.com" title="free hit counter"><img src="https://counter9.stat.ovh/private/freecounterstat.php?c=8b2krqz4kbu8tlwnthu4c9jz6l5p7r4a" border="0" title="free hit counter" alt="free hit counter"></a></noscript>
 
   <!-- Google Fonts -->
@@ -68,7 +115,7 @@
             <li><a class="nav-link scrollto" href="#services">Services</a></li>
             <li><a class="nav-link scrollto " href="#portfolio">Gallery</a></li>
             <li><a class="nav-link scrollto" href="#team">Team</a></li>
-            <li><a href="https://www.spentarnexe.ml/internship.html">Internship</a></li>
+            <li><a href="https://www.spentarnexe.ml">Internship</a></li>
             <li><a class="nav-link scrollto" href="#contact">Contact Us</a></li>
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
@@ -735,28 +782,51 @@ We make it easy to consult the best Lawyers. Book and pay for a telephonic consu
             </div>
           </div>
 
-          <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="container register">
             <div class="row">
-              <div class="col-md-6 form-group">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-              </div>
-              <div class="col-md-6 form-group mt-3 mt-md-0">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-              </div>
+                <div class="col-md-12">
+                        <div class="tab-pane fade show active text-align form-new" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <h3 class="register-heading">Contact <b>ADVHELP</b></h3>
+                            <div class="row register-form">
+                                <div class="col-md-12">
+                                    <form method="post" autocomplete="off" name="google-sheet">
+                                        <div class="form-group">
+                                            <input type="text" name="Name" class="form-control" placeholder="Your Name *" value="" required=""/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name="Email" class="form-control" placeholder="Your Email *" value="" required=""/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="number" name="Phone" class="form-control" placeholder="Your Contact Number *" value="" required=""/>
+                                        </div>
+                                        <div class="form-group">
+                                          <input type="text" name="Message" class="form-control" placeholder="Enter your Message *" value="" required=""/>
+                                      </div>
+                                        <div class="form-group">
+                                            <input type="submit" name="submit" class="btnSubmit btn-block" value="Send Message" />
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                </div>
             </div>
-            <div class="form-group mt-3">
-              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-            </div>
-            <div class="form-group mt-3">
-              <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-            </div>
-            <div class="my-3">
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your message has been sent. Thank you!</div>
-            </div>
-            <div class="text-center"><button type="submit">Send Message</button></div>
-          </form>
+        </div>
+          
+          <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwE2Yr9LC2iK2lI7huiJjOKYUZ65mC8loszaM8dqu7rbTvOA1EMEceyryqoQJOpML1D-Q/exec'
+            const form = document.forms['google-sheet']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("Thanks for Contacting ADVHELP Team..! We Will Contact You Soon..."))
+                .catch(error => console.error('Error!', error.message))
+            })
+          </script>
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
         </div>
       </section><!-- End Contact Us Section -->
